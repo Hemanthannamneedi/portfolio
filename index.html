@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemanth Annamneedi - Home</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS for glowing effect and font */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+            /* Pure black background */
+            color: #e0e0e0;
+            /* Light gray text for contrast */
+        }
+
+        .profile-glow {
+            box-shadow: 0 0 15px #00aaff, 0 0 30px #00aaff, 0 0 45px #00aaff;
+            /* Blue glowing effect */
+            border-radius: 9999px;
+            /* Make it perfectly round */
+            animation: pulse-glow 2s infinite alternate;
+            /* Subtle pulsing animation */
+        }
+
+        @keyframes pulse-glow {
+            from {
+                box-shadow: 0 0 10px #00aaff, 0 0 20px #00aaff, 0 0 30px #00aaff;
+            }
+
+            to {
+                box-shadow: 0 0 20px #00aaff, 0 0 40px #00aaff, 0 0 60px #00aaff;
+            }
+        }
+
+        .nav-link-active {
+            position: relative;
+            color: #00aaff;
+            /* Active link color */
+            text-shadow: 0 0 8px #00aaff, 0 0 15px #00aaff;
+            /* Text glow */
+        }
+
+        .nav-link-active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            /* Adjust as needed */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            /* Width of the glow line */
+            height: 3px;
+            /* Thickness of the glow line */
+            background: #00aaff;
+            box-shadow: 0 0 8px #00aaff, 0 0 15px #00aaff, 0 0 25px #00aaff;
+            border-radius: 5px;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+                /* Stack elements vertically */
+                text-align: center;
+            }
+
+            .profile-container {
+                margin-bottom: 2rem;
+                /* Add space below profile image */
+            }
+
+            nav ul {
+                flex-direction: row; /* Keep nav links in a row */
+                flex-wrap: wrap; /* Allow wrapping if necessary */
+            }
+
+            nav li {
+                margin-bottom: 0; /* Remove space between stacked links */
+                margin-right: 1rem; /* Add space between links */
+            }
+
+            nav li:last-child {
+                margin-right: 0; /* Remove margin for the last link */
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-black min-h-screen text-gray-200">
+
+    <!-- Navigation Bar -->
+    <header class="p-6 sticky top-0 bg-black z-50 shadow-lg">
+        <nav class="max-w-7xl mx-auto flex justify-center">
+            <ul id="navbar-links" class="flex space-x-8 md:space-x-12 lg:space-x-16 text-lg font-medium">
+                <li><a href="index.html"
+                        class="nav-link nav-link-active hover:text-blue-400 transition-colors duration-300">Home</a>
+                </li>
+                <li><a href="about.html" class="nav-link hover:text-blue-400 transition-colors duration-300">About</a>
+                </li>
+                <li><a href="skills.html" class="nav-link hover:text-blue-400 transition-colors duration-300">Skills</a>
+                </li>
+                <li><a href="projects.html"
+                        class="nav-link hover:text-blue-400 transition-colors duration-300">Projects</a></li>
+                <li><a href="contact.html"
+                        class="nav-link hover:text-blue-400 transition-colors duration-300">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main
+        class="max-w-7xl mx-auto px-6 py-12 md:py-20 flex flex-col md:flex-row items-center md:items-start justify-center md:space-x-12">
+        <!-- Profile Card -->
+        <div class="profile-container flex flex-col items-center p-4">
+            <div
+                class="rounded-full overflow-hidden w-48 h-48 md:w-64 md:h-64 flex items-center justify-center profile-glow">
+                <img src="https://placehold.co/256x256/000000/FFFFFF?text=H" alt="Profile Picture"
+                    class="w-full h-full object-cover rounded-full">
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold mt-6 text-white text-center">Hemanth Annamneedi</h1>
+            <p class="text-xl md:text-2xl font-light text-blue-300 text-center">Junior Full Stack Developer</p>
+        </div>
+
+        <!-- Welcome Text -->
+        <div class="text-content mt-8 md:mt-0 max-w-2xl text-center md:text-left">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Welcome to My Portfolio! <span
+                    class="text-red-500 text-5xl">🚀</span></h2>
+            <p class="text-lg md:text-xl leading-relaxed mb-4">
+                Hello! I'm <span class="font-semibold text-blue-300">Hemanth Annamneedi</span>, a passionate <span
+                    class="font-semibold text-blue-300">Full Stack Developer</span> eager to create scalable and
+                efficient
+                web applications. I specialize in MongoDB, Express.js and Node.js, building dynamic and interactive
+                websites that enhance user experiences.
+            </p>
+            <p class="text-lg md:text-xl leading-relaxed">
+                I am always excited to take on new challenges and opportunities. Let's connect and build something
+                amazing together! <span class="text-red-500 text-3xl">🚀</span>
+            </p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="p-6 text-center text-gray-500 text-sm mt-12">
+        &copy; 2025 Hemanth-Annamneedi. All rights reserved.
+    </footer>
+
+</body>
+
+</html>

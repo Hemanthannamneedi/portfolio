@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemanth Annamneedi - Contact</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS for glowing effect and font */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+            color: #e0e0e0;
+        }
+
+        .profile-glow {
+            box-shadow: 0 0 15px #00aaff, 0 0 30px #00aaff, 0 0 45px #00aaff;
+            border-radius: 9999px;
+            animation: pulse-glow 2s infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            from {
+                box-shadow: 0 0 10px #00aaff, 0 0 20px #00aaff, 0 0 30px #00aaff;
+            }
+
+            to {
+                box-shadow: 0 0 20px #00aaff, 0 0 40px #00aaff, 0 0 60px #00aaff;
+            }
+        }
+
+        .nav-link-active {
+            position: relative;
+            color: #00aaff;
+            text-shadow: 0 0 8px #00aaff, 0 0 15px #00aaff;
+        }
+
+        .nav-link-active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 3px;
+            background: #00aaff;
+            box-shadow: 0 0 8px #00aaff, 0 0 15px #00aaff, 0 0 25px #00aaff;
+            border-radius: 5px;
+        }
+
+        .section-title {
+            color: #00aaff;
+            text-shadow: 0 0 8px #00aaff, 0 0 15px #00aaff;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .card-bg {
+            background-color: #1a1a1a;
+            border: 1px solid #00aaff;
+            box-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+        }
+
+        /* Custom alignment for contact list */
+        .contact-list > div {
+            display: flex; /* Use flexbox for each contact item */
+            align-items: center; /* Vertically align items in the center */
+            margin-bottom: 0.75rem; /* Add some space between items */
+            border-bottom: 1px solid #2a2a2a; /* Lighter border as in the image */
+            padding-bottom: 0.75rem; /* Padding for the bottom border */
+        }
+
+        .contact-list > div:last-child {
+            margin-bottom: 0; /* No margin after the last item */
+            border-bottom: none; /* No border for the last item */
+            padding-bottom: 0; /* No padding for the last item */
+        }
+
+        .contact-list .contact-label {
+            width: 180px; /* Adjust this width as needed to align the colons */
+            min-width: 150px; /* Minimum width to prevent shrinking */
+            flex-shrink: 0; /* Prevent the label from shrinking */
+            margin-right: 1rem; /* Space between label and colon/value */
+            text-align: right; /* Align label text to the right for colon alignment */
+            color: #d0d0d0; /* Slightly lighter color for labels */
+        }
+
+        .contact-list .contact-value {
+            flex-grow: 1; /* Allow the value to take up remaining space */
+            color: #e0e0e0;
+        }
+
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-container {
+                margin-bottom: 2rem;
+            }
+
+            nav ul {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            nav li {
+                margin-bottom: 0;
+                margin-right: 1rem;
+            }
+
+            nav li:last-child {
+                margin-right: 0;
+            }
+
+            .contact-list {
+                text-align: left; /* Align text to left for smaller screens */
+            }
+
+            .contact-list > div {
+                flex-direction: column; /* Stack label and value vertically */
+                align-items: flex-start; /* Align items to the start when stacked */
+                margin-bottom: 1rem;
+                padding-bottom: 0.5rem; /* Adjust padding for stacked items */
+            }
+
+            .contact-list .contact-label {
+                width: auto; /* Remove fixed width */
+                min-width: unset; /* Remove min-width */
+                text-align: left; /* Align label text to the left */
+                margin-right: 0; /* Remove right margin */
+                margin-bottom: 0.25rem; /* Space between label and value */
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-black min-h-screen text-gray-200">
+
+    <header class="p-6 sticky top-0 bg-black z-50 shadow-lg">
+        <nav class="max-w-7xl mx-auto flex justify-center">
+            <ul id="navbar-links" class="flex space-x-8 md:space-x-12 lg:space-x-16 text-lg font-medium">
+                <li><a href="index.html" class="nav-link hover:text-blue-400 transition-colors duration-300">Home</a></li>
+                <li><a href="about.html" class="nav-link hover:text-blue-400 transition-colors duration-300">About</a></li>
+                <li><a href="skills.html" class="nav-link hover:text-blue-400 transition-colors duration-300">Skills</a></li>
+                <li><a href="projects.html" class="nav-link hover:text-blue-400 transition-colors duration-300">Projects</a></li>
+                <li><a href="contact.html" class="nav-link nav-link-active hover:text-blue-400 transition-colors duration-300">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-12 md:py-20 flex flex-col md:flex-row items-center md:items-start justify-center md:space-x-12">
+        <div class="profile-container flex flex-col items-center p-4">
+            <div class="rounded-full overflow-hidden w-48 h-48 md:w-64 md:h-64 flex items-center justify-center profile-glow">
+                <img src="https://placehold.co/256x256/000000/FFFFFF?text=H" alt="Profile Picture" class="w-full h-full object-cover rounded-full">
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold mt-6 text-white text-center">Hemanth Annamneedi</h1>
+            <p class="text-xl md:text-2xl font-light text-blue-300 text-center">Junior Full Stack Developer</p>
+        </div>
+
+        <section class="mt-8 md:mt-0 max-w-2xl">
+            <h2 class="text-4xl md:text-5xl font-bold section-title">Contact Me</h2>
+            <div class="card-bg p-8 rounded-lg shadow-lg">
+                <div class="contact-list text-lg md:text-xl">
+                    <div>
+                        <span class="contact-label">Mobile Number</span>
+                        <a class="contact-value text-blue-300 ">: 9703377388</a>
+                    </div>
+                    <div>
+                        <span class="contact-label">Gmail Account</span>
+                        <a href="mailto:hemanthannamneedi05@gmail.com" class="contact-value text-blue-300 ">: hemanthannamneedi05@gmail.com</a>
+                    </div>
+                    <div>
+                        <span class="contact-label">Instagram Account</span>
+                        <a href="https://www.instagram.com/hemanthannamneedi/" target="_blank" class="contact-value text-blue-300 ">: instagram.com</a>
+                    </div>
+                    <div>
+                        <span class="contact-label">Github Account</span>
+                        <a href="https://github.com/Hemanthannamneedi" target="_blank" class="contact-value text-blue-300 ">: github.com</a>
+                    </div>
+                    <div>
+                        <span class="contact-label">LinkedIn</span>
+                        <a href="https://www.linkedin.com/in/hemanth-annamneedi-204122354/" target="_blank" class="contact-value text-blue-300 ">: linkedin.com</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="p-6 text-center text-gray-500 text-sm mt-12">
+        &copy; 2025 Hemanth-Annamneedi. All rights reserved.
+    </footer>
+
+</body>
+
+</html>
