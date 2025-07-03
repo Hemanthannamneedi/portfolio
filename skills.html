@@ -36,28 +36,44 @@
             }
         }
 
-        .nav-link-active {
+        /* Adjusted for sidebar active link */
+        .sidebar-link-active {
             position: relative;
-            color: #00aaff;
-            /* Active link color */
+            background-color: rgba(2, 132, 199, 0.4);
+            /* Tailwind's blue-600 with opacity */
+            color: #fff;
+            /* White text for active link */
+            border-radius: 0.375rem;
+            /* rounded-md */
             text-shadow: 0 0 8px #00aaff, 0 0 15px #00aaff;
             /* Text glow */
         }
 
-        .nav-link-active::after {
-            content: '';
+        /* You might still need some custom adjustments for the dropdown if not using Bootstrap's JS */
+        .dropdown-menu {
+            display: none;
             position: absolute;
-            bottom: -5px;
-            /* Adjust as needed */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            /* Width of the glow line */
-            height: 3px;
-            /* Thickness of the glow line */
-            background: #00aaff;
-            box-shadow: 0 0 8px #00aaff, 0 0 15px #00aaff, 0 0 25px #00aaff;
-            border-radius: 5px;
+            background-color: #1a202c;
+            /* dark background */
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 0.375rem;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-item {
+            color: #e0e0e0;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-item:hover {
+            background-color: #2d3748;
         }
 
         .section-title {
@@ -79,55 +95,57 @@
         /* Custom styles for skill alignment */
         .skills-grid {
             display: grid;
-            grid-template-columns: auto 1fr; /* Two columns: first for label, second for value */
-            gap: 0.5rem 1rem; /* Row gap and column gap */
-            align-items: start; /* Align items to the start of their cell */
+            grid-template-columns: auto 1fr;
+            /* Two columns: first for label, second for value */
+            gap: 0.5rem 1rem;
+            /* Row gap and column gap */
+            align-items: start;
+            /* Align items to the start of their cell */
         }
 
         .skills-label {
-            justify-self: end; /* Align label to the end (right) */
+            justify-self: end;
+            /* Align label to the end (right) */
             text-align: right;
-            padding-right: 0.5rem; /* Space before the colon */
+            padding-right: 0.5rem;
+            /* Space before the colon */
         }
 
         .skills-value {
-            justify-self: start; /* Align value to the start (left) */
+            justify-self: start;
+            /* Align value to the start (left) */
             text-align: left;
-            word-break: break-word; /* Ensure long text wraps */
+            word-break: break-word;
+            /* Ensure long text wraps */
         }
 
         /* Responsive adjustments for smaller screens */
         @media (max-width: 768px) {
-            .main-content {
+            .main-layout {
                 flex-direction: column;
-                /* Stack elements vertically */
-                text-align: center;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 1rem;
             }
 
             .profile-container {
                 margin-bottom: 2rem;
-                /* Add space below profile image */
+                text-align: center;
             }
 
-            nav ul {
-                flex-direction: row; /* Keep nav links in a row */
-                flex-wrap: wrap; /* Allow wrapping if necessary */
-            }
-
-            nav li {
-                margin-bottom: 0; /* Remove space between stacked links */
-                margin-right: 1rem; /* Add space between links */
-            }
-
-            nav li:last-child {
-                margin-right: 0; /* Remove margin for the last link */
+            .text-content {
+                text-align: center;
             }
 
             .skills-list {
                 text-align: center;
             }
 
-            .skills-list > div {
+            .skills-list>div {
                 flex-direction: column;
                 align-items: center;
             }
@@ -139,71 +157,128 @@
     </style>
 </head>
 
-<body class="bg-black min-h-screen text-gray-200">
+<body class="bg-black min-h-screen text-gray-200 flex">
 
-    <header class="p-6 sticky top-0 bg-black z-50 shadow-lg">
-        <nav class="max-w-7xl mx-auto flex justify-center">
-            <ul id="navbar-links" class="flex space-x-8 md:space-x-12 lg:space-x-16 text-lg font-medium">
-                <li><a href="index.html" class="nav-link hover:text-blue-400 transition-colors duration-300">Home</a>
-                </li>
-                <li><a href="about.html" class="nav-link hover:text-blue-400 transition-colors duration-300">About</a>
-                </li>
-                <li><a href="skills.html"
-                        class="nav-link nav-link-active hover:text-blue-400 transition-colors duration-300">Skills</a>
-                </li>
-                <li><a href="projects.html"
-                        class="nav-link hover:text-blue-400 transition-colors duration-300">Projects</a></li>
-                <li><a href="contact.html"
-                        class="nav-link hover:text-blue-400 transition-colors duration-300">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main
-        class="max-w-7xl mx-auto px-6 py-12 md:py-20 flex flex-col md:flex-row items-center md:items-start justify-center md:space-x-12">
-        <div class="profile-container flex flex-col items-center p-4">
-            <div
-                class="rounded-full overflow-hidden w-48 h-48 md:w-64 md:h-64 flex items-center justify-center profile-glow">
-                <img src="https://placehold.co/256x256/000000/FFFFFF?text=H" alt="Profile Picture"
-                    class="w-full h-full object-cover rounded-full">
-            </div>
-            <h1 class="text-3xl md:text-4xl font-bold mt-6 text-white text-center">HEMANTH ANNAMNEEDI</h1>
-            <p class="text-xl md:text-2xl font-light text-blue-300 text-center">Junior Full Stack Developer</p>
+    <aside class="flex flex-col flex-shrink-0 p-3 bg-gray-900 text-white min-h-screen" style="width: 280px;">
+        <a href="/" class="flex items-center mb-3 md:mb-0 me-md-auto text-white no-underline">
+            <svg class="w-10 h-8 mr-2 text-blue-400" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                    clip-rule="evenodd"></path>
+            </svg>
+            <span class="text-2xl font-semibold">Sidebar</span>
+        </a>
+        <hr class="border-gray-700">
+        <ul class="nav flex-col mb-auto space-y-2">
+            <li class="nav-item">
+                <a href="index.html" class="flex items-center p-2 text-white rounded-md hover:bg-gray-700 transition-colors duration-300">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
+                        </path>
+                    </svg>
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="about.html" class="flex items-center p-2 text-white rounded-md hover:bg-gray-700 transition-colors duration-300">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M2 10a8 8 0 1116 0 8 8 0 01-16 0zm8-7a1 1 0 00-1 1v4a1 1 0 002 0V4a1 1 0 00-1-1zm-3 7a3 3 0 116 0 3 3 0 01-6 0z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    About
+                </a>
+            </li>
+            <li>
+                <a href="skills.html" class="flex items-center p-2 text-white rounded-md sidebar-link-active">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M10 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zm-4 4a1 1 0 00-1 1v2a1 1 0 002 0V7a1 1 0 00-1-1zm8 0a1 1 0 00-1 1v2a1 1 0 002 0V7a1 1 0 00-1-1zM4 11a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1zm8-4a1 1 0 00-1 1v2a1 1 0 002 0V8a1 1 0 00-1-1zm-4 4a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1zm0 4a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1zm4-4a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1zm-4 4a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1zm4 4a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1zm-4 4a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    Skills
+                </a>
+            </li>
+            <li>
+                <a href="projects.html" class="flex items-center p-2 text-white rounded-md hover:bg-gray-700 transition-colors duration-300">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M10 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zm-4 4a1 1 0 00-1 1v2a1 1 0 002 0V7a1 1 0 00-1-1zm8 0a1 1 0 00-1 1v2a1 1 0 002 0V7a1 1 0 00-1-1zM4 11a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1zm8-4a1 1 0 00-1 1v2a1 1 0 002 0V8a1 1 0 00-1-1zm-4 4a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1zm0 4a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1zm4-4a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1zm-4 4a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1zm4 4a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1zm-4 4a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    Projects
+                </a>
+            </li>
+            <li>
+                <a href="contact.html" class="flex items-center p-2 text-white rounded-md hover:bg-gray-700 transition-colors duration-300">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                    </svg>
+                    Contact
+                </a>
+            </li>
+        </ul>
+        <hr class="border-gray-700 mt-auto">
+        <div class="dropdown relative">
+            <a href="#"
+                class="flex items-center text-white no-underline dropdown-toggle p-2 rounded-md hover:bg-gray-700"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                
+                <strong>HEMANTH</strong>
+            </a>
+            
         </div>
+    </aside>
 
-        <section class="mt-8 md:mt-0 max-w-2xl">
-            <h2 class="text-4xl md:text-5xl font-bold section-title">Skills</h2>
-            <div class="card-bg p-8 rounded-lg shadow-lg">
-                <div class="skills-grid text-lg md:text-xl">
-                    <span class="font-semibold text-gray-300 skills-label">Programming Languages</span>
-                    <span class="text-blue-300 skills-value">: Python</span>
-
-                    <span class="font-semibold text-gray-300 skills-label">Front-End Technologies</span>
-                    <span class="text-blue-300 skills-value">: HTML, CSS, JavaScript</span>
-
-                    <span class="font-semibold text-gray-300 skills-label">Frameworks</span>
-                    <span class="text-blue-300 skills-value">: Node.js, Express.js</span>
-
-                    <span class="font-semibold text-gray-300 skills-label">Database</span>
-                    <span class="text-blue-300 skills-value">: MongoDB Atlas</span>
-
-                    <span class="font-semibold text-gray-300 skills-label">Version Control</span>
-                    <span class="text-blue-300 skills-value">: GitHub</span>
-
-                    <span class="font-semibold text-gray-300 skills-label">Deployments</span>
-                    <span class="text-blue-300 skills-value">: Vercel, Render</span>
-
-                    <span class="font-semibold text-gray-300 skills-label">Tools</span>
-                    <span class="text-blue-300 skills-value">: Visual Studio Code</span>
+    <div class="flex-grow">
+        <main
+            class="max-w-7xl mx-auto px-6 py-12 md:py-20 flex flex-col md:flex-row items-center md:items-start justify-center md:space-x-12">
+            <div class="profile-container flex flex-col items-center p-4 md:w-1/3 md:flex-shrink-0">
+                <div
+                    class="rounded-full overflow-hidden w-48 h-48 md:w-64 md:h-64 flex items-center justify-center profile-glow">
+                    <img src="https://placehold.co/256x256/000000/FFFFFF?text=H" alt="Profile Picture"
+                        class="w-full h-full object-cover rounded-full">
                 </div>
+                <h1 class="text-3xl md:text-4xl font-bold mt-6 text-white text-center">HEMANTH ANNAMNEEDI</h1>
+                <p class="text-xl md:text-2xl font-light text-blue-300 text-center">Junior Full Stack Developer</p>
             </div>
-        </section>
-    </main>
 
-    <footer class="p-6 text-center text-gray-500 text-sm mt-12">
-        &copy; 2025 Hemanth-Annamneedi. All rights reserved.
-    </footer>
+            <section class="mt-8 md:mt-0 max-w-2xl md:w-2/3">
+                <h2 class="text-4xl md:text-5xl font-bold section-title">Skills</h2>
+                <div class="card-bg p-8 rounded-lg shadow-lg">
+                    <div class="skills-grid text-lg md:text-xl">
+                        <span class="font-semibold text-gray-300 skills-label">Programming Languages</span>
+                        <span class="text-blue-300 skills-value">: Python</span>
 
+                        <span class="font-semibold text-gray-300 skills-label">Front-End Technologies</span>
+                        <span class="text-blue-300 skills-value">: HTML, CSS, JavaScript</span>
+
+                        <span class="font-semibold text-gray-300 skills-label">Frameworks</span>
+                        <span class="text-blue-300 skills-value">: Node.js, Express.js</span>
+
+                        <span class="font-semibold text-gray-300 skills-label">Database</span>
+                        <span class="text-blue-300 skills-value">: MongoDB Atlas</span>
+
+                        <span class="font-semibold text-gray-300 skills-label">Version Control</span>
+                        <span class="text-blue-300 skills-value">: GitHub</span>
+
+                        <span class="font-semibold text-gray-300 skills-label">Deployments</span>
+                        <span class="text-blue-300 skills-value">: Vercel, Render</span>
+
+                        <span class="font-semibold text-gray-300 skills-label">Tools</span>
+                        <span class="text-blue-300 skills-value">: Visual Studio Code</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="p-6 text-center text-gray-500 text-sm mt-12">
+            &copy; 2025 Hemanth-Annamneedi. All rights reserved.
+        </footer>
+    </div>
 </body>
 
 </html>
