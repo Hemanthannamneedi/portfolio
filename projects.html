@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hemanth Annamneedi - Projects</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         /* Custom CSS for glowing effect and font */
@@ -37,28 +36,44 @@
             }
         }
 
-        .nav-link-active {
+        /* Adjusted for sidebar active link */
+        .sidebar-link-active {
             position: relative;
-            color: #00aaff;
-            /* Active link color */
+            background-color: rgba(2, 132, 199, 0.4);
+            /* Tailwind's blue-600 with opacity */
+            color: #fff;
+            /* White text for active link */
+            border-radius: 0.375rem;
+            /* rounded-md */
             text-shadow: 0 0 8px #00aaff, 0 0 15px #00aaff;
             /* Text glow */
         }
 
-        .nav-link-active::after {
-            content: '';
+        /* You might still need some custom adjustments for the dropdown if not using Bootstrap's JS */
+        .dropdown-menu {
+            display: none;
             position: absolute;
-            bottom: -5px;
-            /* Adjust as needed */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            /* Width of the glow line */
-            height: 3px;
-            /* Thickness of the glow line */
-            background: #00aaff;
-            box-shadow: 0 0 8px #00aaff, 0 0 15px #00aaff, 0 0 25px #00aaff;
-            border-radius: 5px;
+            background-color: #1a202c;
+            /* dark background */
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 0.375rem;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-item {
+            color: #e0e0e0;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-item:hover {
+            background-color: #2d3748;
         }
 
         .section-title {
@@ -79,133 +94,224 @@
 
         /* Responsive adjustments for smaller screens */
         @media (max-width: 768px) {
-            .main-content {
+            .main-layout {
                 flex-direction: column;
-                /* Stack elements vertically */
-                text-align: center;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 1rem;
             }
 
             .profile-container {
                 margin-bottom: 2rem;
-                /* Add space below profile image */
+                text-align: center;
             }
 
-            nav ul {
-                flex-direction: row; /* Keep nav links in a row */
-                flex-wrap: wrap; /* Allow wrapping if necessary */
-            }
-
-            nav li {
-                margin-bottom: 0; /* Remove space between stacked links */
-                margin-right: 1rem; /* Add space between links */
-            }
-
-            nav li:last-child {
-                margin-right: 0; /* Remove margin for the last link */
+            .text-content {
+                text-align: center;
             }
 
             .projects-grid {
-                grid-template-columns: 1fr; /* Single column for projects on small screens */
+                grid-template-columns: 1fr;
+                /* Single column for projects on small screens */
             }
         }
     </style>
 </head>
 
-<body class="bg-black min-h-screen text-gray-200">
+<body class="bg-black min-h-screen text-gray-200 flex">
 
-    <!-- Navigation Bar -->
-    <header class="p-6 sticky top-0 bg-black z-50 shadow-lg">
-        <nav class="max-w-7xl mx-auto flex justify-center">
-            <ul id="navbar-links" class="flex space-x-8 md:space-x-12 lg:space-x-16 text-lg font-medium">
-                <li><a href="index.html" class="nav-link hover:text-blue-400 transition-colors duration-300">Home</a></li>
-                <li><a href="about.html" class="nav-link hover:text-blue-400 transition-colors duration-300">About</a></li>
-                <li><a href="skills.html" class="nav-link hover:text-blue-400 transition-colors duration-300">Skills</a></li>
-                <li><a href="projects.html" class="nav-link nav-link-active hover:text-blue-400 transition-colors duration-300">Projects</a></li>
-                <li><a href="contact.html" class="nav-link hover:text-blue-400 transition-colors duration-300">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main class="max-w-7xl mx-auto px-6 py-12 md:py-20 flex flex-col md:flex-row items-center md:items-start justify-center md:space-x-12">
-        <!-- Profile Card -->
-        <div class="profile-container flex flex-col items-center p-4">
-            <div class="rounded-full overflow-hidden w-48 h-48 md:w-64 md:h-64 flex items-center justify-center profile-glow">
-                <img src="https://placehold.co/256x256/000000/FFFFFF?text=H" alt="Profile Picture" class="w-full h-full object-cover rounded-full">
-            </div>
-            <h1 class="text-3xl md:text-4xl font-bold mt-6 text-white text-center">Hemanth Annamneedi</h1>
-            <p class="text-xl md:text-2xl font-light text-blue-300 text-center">Junior Full Stack Developer</p>
+    <aside class="flex flex-col flex-shrink-0 p-3 bg-gray-900 text-white min-h-screen" style="width: 280px;">
+        <a href="/" class="flex items-center mb-3 md:mb-0 me-md-auto text-white no-underline">
+            <svg class="w-10 h-8 mr-2 text-blue-400" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                    clip-rule="evenodd"></path>
+            </svg>
+            <span class="text-2xl font-semibold">Sidebar</span>
+        </a>
+        <hr class="border-gray-700">
+        <ul class="nav flex-col mb-auto space-y-2">
+            <li class="nav-item">
+                <a href="index.html"
+                    class="flex items-center p-2 text-white rounded-md hover:bg-gray-700 transition-colors duration-300">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
+                        </path>
+                    </svg>
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="about.html"
+                    class="flex items-center p-2 text-white rounded-md hover:bg-gray-700 transition-colors duration-300">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M2 10a8 8 0 1116 0 8 8 0 01-16 0zm8-7a1 1 0 00-1 1v4a1 1 0 002 0V4a1 1 0 00-1-1zm-3 7a3 3 0 116 0 3 3 0 01-6 0z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    About
+                </a>
+            </li>
+            <li>
+                <a href="skills.html"
+                    class="flex items-center p-2 text-white rounded-md hover:bg-gray-700 transition-colors duration-300">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M10 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zm-4 4a1 1 0 00-1 1v2a1 1 0 002 0V7a1 1 0 00-1-1zm8 0a1 1 0 00-1 1v2a1 1 0 002 0V7a1 1 0 00-1-1zM4 11a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1zm8-4a1 1 0 00-1 1v2a1 1 0 002 0V8a1 1 0 00-1-1zm-4 4a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1zm0 4a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1zm4-4a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1zm-4 4a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1zm4 4a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1zm-4 4a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    Skills
+                </a>
+            </li>
+            <li>
+                <a href="projects.html" class="flex items-center p-2 text-white rounded-md sidebar-link-active">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M10 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zm-4 4a1 1 0 00-1 1v2a1 1 0 002 0V7a1 1 0 00-1-1zm8 0a1 1 0 00-1 1v2a1 1 0 002 0V7a1 1 0 00-1-1zM4 11a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1zm8-4a1 1 0 00-1 1v2a1 1 0 002 0V8a1 1 0 00-1-1zm-4 4a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1zm0 4a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1zm4-4a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1zm-4 4a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1zm4 4a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1zm-4 4a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    Projects
+                </a>
+            </li>
+            <li>
+                <a href="contact.html"
+                    class="flex items-center p-2 text-white rounded-md hover:bg-gray-700 transition-colors duration-300">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    Contact
+                </a>
+            </li>
+        </ul>
+        <hr class="border-gray-700 mt-auto">
+        <div class="dropdown relative">
+            <a href="#"
+                class="flex items-center text-white no-underline dropdown-toggle p-2 rounded-md hover:bg-gray-700"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                
+                <strong>HEMANTH</strong>
+            </a>
+            
         </div>
+    </aside>
 
-        <!-- Projects Section -->
-        <section class="mt-8 md:mt-0 max-w-2xl">
-            <h2 class="text-4xl md:text-5xl font-bold section-title">Projects</h2>
-            <div class="projects-grid grid grid-cols-1 gap-8">
-                <!-- Project 1 -->
-                <div class="card-bg p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-white mb-3">Tic-Tac-Toe</h3>
-                    <p class="text-gray-300 mb-4 text-lg">
-                        The online version faithfully recreates the classic pen-and-paper experience — just click X or O on a 3×3 grid, try to make three in a row, block your opponent, and enjoy!
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="https://tic-tac-toe-8p73-git-main-hemanths-projects-75381606.vercel.app/" class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-300 shadow-md">View Project</a>
-                        <a href="https://github.com/Hemanthannamneedi/tic-tac-toe.git" class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-300 shadow-md">View Source Code</a>
-                    </div>
+    <div class="flex-grow">
+        <main
+            class="max-w-7xl mx-auto px-6 py-12 md:py-20 flex flex-col md:flex-row items-center md:items-start justify-center md:space-x-12">
+            <div class="profile-container flex flex-col items-center p-4 md:w-1/3 md:flex-shrink-0">
+                <div
+                    class="rounded-full overflow-hidden w-48 h-48 md:w-64 md:h-64 flex items-center justify-center profile-glow">
+                    <img src="https://placehold.co/256x256/000000/FFFFFF?text=H" alt="Profile Picture"
+                        class="w-full h-full object-cover rounded-full">
                 </div>
-                <!-- Project 2 -->
-                <div class="card-bg p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-white mb-3">E-commerce System</h3>
-                    <p class="text-gray-300 mb-4 text-lg">
-                        An online e-commerce system brings together a website, shopping cart, payment processing, and backend logistics. It's what transforms traditional retail into a digital, scalable, and data-driven business.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="https://ecommerce-system-flame.vercel.app/" class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-300 shadow-md">View Project</a>
-                        <a href="https://github.com/Hemanthannamneedi/ecommerce-system.git" class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-300 shadow-md">View Source Code</a>
-                    </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="card-bg p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-white mb-3">Certificate Creation</h3>
-                    <p class="text-gray-300 mb-4 text-lg">
-                        Certificate generators are widely used for recognizing achievements in education, training programs, corporate awards, events, and more, providing a professional and efficient way to acknowledge accomplishments.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="https://certificate-creation.vercel.app/" class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-300 shadow-md">View Project</a>
-                        <a href="https://github.com/Hemanthannamneedi/certificate-creation.git" class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-300 shadow-md">View Source Code</a>
-                    </div>
-                </div>
-                <!--project 4 -->
-                
-                <div class="card-bg p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-white mb-3">Student Gig</h3>
-                    <p class="text-gray-300 mb-4 text-lg">
-                        The gig economy is a type of job market where you do short-term or freelance work instead of having a regular job, which is great for students.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="https://student-gig.vercel.app/" class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-300 shadow-md">View Project</a>
-                        <a href="https://github.com/Hemanthannamneedi/StudentGig.git" class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-300 shadow-md">View Source Code</a>
-                    </div>
-                </div>
-
-                
-                <!-- Project 5 -->
-                <div class="card-bg p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold text-white mb-3">Random Password Generator</h3>
-                    <p class="text-gray-300 mb-4 text-lg">
-                        A random password generator is a tool that automatically creates strong, unique, and unpredictable passwords. It typically uses a combination of uppercase and lowercase letters, numbers, and special characters to generate passwords that are difficult for humans or computers to guess, significantly enhancing online security.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="https://password-generator-jade-three.vercel.app/" class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-300 shadow-md">View Project</a>
-                        <a href="https://github.com/Hemanthannamneedi/password-generator.git" class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-300 shadow-md">View Source Code</a>
-                    </div>
-                </div>
+                <h1 class="text-3xl md:text-4xl font-bold mt-6 text-white text-center">Hemanth Annamneedi</h1>
+                <p class="text-xl md:text-2xl font-light text-blue-300 text-center">Junior Full Stack Developer</p>
             </div>
-        </section>
-    </main>
 
-    <!-- Footer -->
-    <footer class="p-6 text-center text-gray-500 text-sm mt-12">
-        &copy; 2025 Hemanth Annamneedi. All rights reserved.
-    </footer>
+            <section class="mt-8 md:mt-0 max-w-2xl md:w-2/3">
+                <h2 class="text-4xl md:text-5xl font-bold section-title">Projects</h2>
+                <div class="projects-grid grid grid-cols-1 gap-8">
+                    <div class="card-bg p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold text-white mb-3">Tic-Tac-Toe</h3>
+                        <p class="text-gray-300 mb-4 text-lg">
+                            The online version faithfully recreates the classic pen-and-paper experience — just click X
+                            or O on a 3×3 grid, try to make three in a row, block your opponent, and enjoy!
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="https://tic-tac-toe-8p73-git-main-hemanths-projects-75381606.vercel.app/"
+                                class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-300 shadow-md">View
+                                Project</a>
+                            <a href="https://github.com/Hemanthannamneedi/tic-tac-toe.git"
+                                class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-300 shadow-md">View
+                                Source Code</a>
+                        </div>
+                    </div>
+                    <div class="card-bg p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold text-white mb-3">E-commerce System</h3>
+                        <p class="text-gray-300 mb-4 text-lg">
+                            An online e-commerce system brings together a website, shopping cart, payment processing,
+                            and backend logistics. It's what transforms traditional retail into a digital, scalable, and
+                            data-driven business.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="https://ecommerce-system-flame.vercel.app/"
+                                class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-300 shadow-md">View
+                                Project</a>
+                            <a href="https://github.com/Hemanthannamneedi/ecommerce-system.git"
+                                class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-300 shadow-md">View
+                                Source Code</a>
+                        </div>
+                    </div>
+                    <div class="card-bg p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold text-white mb-3">Certificate Creation</h3>
+                        <p class="text-gray-300 mb-4 text-lg">
+                            Certificate generators are widely used for recognizing achievements in education, training
+                            programs, corporate awards, events, and more, providing a professional and efficient way to
+                            acknowledge accomplishments.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="https://certificate-creation.vercel.app/"
+                                class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-300 shadow-md">View
+                                Project</a>
+                            <a href="https://github.com/Hemanthannamneedi/certificate-creation.git"
+                                class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-300 shadow-md">View
+                                Source Code</a>
+                        </div>
+                    </div>
+                    <div class="card-bg p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold text-white mb-3">Student Gig</h3>
+                        <p class="text-gray-300 mb-4 text-lg">
+                            The gig economy is a type of job market where you do short-term or freelance work instead of
+                            having a regular job, which is great for students.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="https://student-gig.vercel.app/"
+                                class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-300 shadow-md">View
+                                Project</a>
+                            <a href="https://github.com/Hemanthannamneedi/StudentGig.git"
+                                class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-300 shadow-md">View
+                                Source Code</a>
+                        </div>
+                    </div>
 
+
+                    <div class="card-bg p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold text-white mb-3">Random Password Generator</h3>
+                        <p class="text-gray-300 mb-4 text-lg">
+                            A random password generator is a tool that automatically creates strong, unique, and
+                            unpredictable passwords. It typically uses a combination of uppercase and lowercase
+                            letters, numbers, and special characters to generate passwords that are difficult for humans
+                            or computers to guess, significantly enhancing online security.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="https://password-generator-jade-three.vercel.app/"
+                                class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-300 shadow-md">View
+                                Project</a>
+                            <a href="https://github.com/Hemanthannamneedi/password-generator.git"
+                                class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-300 shadow-md">View
+                                Source Code</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="p-6 text-center text-gray-500 text-sm mt-12">
+            &copy; 2025 Hemanth Annamneedi. All rights reserved.
+        </footer>
+    </div>
 </body>
+
 </html>
