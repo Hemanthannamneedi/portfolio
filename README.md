@@ -48,9 +48,9 @@ I am always excited to take on new challenges and apply my analytical and develo
 
 📧 Email: hemanthannamneedi05@gmail.com
 
-💼 LinkedIn: [(https://www.linkedin.com/in/hemanth-annamneedi-204122354/)]
+💼 LinkedIn: https://www.linkedin.com/in/hemanth-annamneedi-204122354/
 
-🐙 GitHub: [(https://github.com/Hemanthannamneedi?tab=repositories)]
+🐙 GitHub: https://github.com/Hemanthannamneedi?tab=repositories
 
 ⭐️ If you like this portfolio design or found my projects interesting, feel free to leave a star on this repository!
 
